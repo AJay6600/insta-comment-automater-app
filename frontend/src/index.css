@@ -13,4 +13,5 @@
   --gradient-secondary: linear-gradient(180deg, #83a2ff, #141826);
   --glow: 0 0 40px rgba(154, 59, 255, 0.3);
   --glow-accent: 0 0 40px rgba(61, 139, 255, 0.3);
+  --color-active-shadow: 0 0 0 2px #9935ff;
 }

@@ -16,9 +16,10 @@ module.exports = {
       },
       secondary: {
         DEFAULT: "var(--color-secondary)",
-        100: "#26344a",
-        200: "#1d293b",
-        300: "#161f30",
+        100: "#2e3a55",
+        200: "#26344a",
+        300: "#1E2433",
+        400: "#161f30",
       },
       error: {
         DEFAULT: "var(--color-error)",
