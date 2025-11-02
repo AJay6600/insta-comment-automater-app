@@ -31,5 +31,8 @@ export default {
       optionActiveBg: "var(--color-secondary)",
       multipleItemBg: "var(--gradient-primary)",
     },
+    Button: {
+      colorBgContainerDisabled: "var(--color-primary)",
+    },
   },
 } satisfies ThemeConfig;

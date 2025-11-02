@@ -10,3 +10,6 @@ export type CommenterSettingType = {
   numberOfComment: number;
   selectedAccounts: InstagramAccountDetailsType[];
 };
+
+export type CommentsPerSelectedAccountsDataType =
+  InstagramAccountDetailsType & { comments: string[] };
