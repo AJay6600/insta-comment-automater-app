@@ -1,5 +1,5 @@
 import { Avatar, Badge, Button, Col, Row, Typography } from "antd";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaUser, FaUserCheck } from "react-icons/fa";
 import InstagramAccounts from "./InstagramAccounts";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
