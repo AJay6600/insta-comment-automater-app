@@ -1,6 +1,5 @@
 import { Layout } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
-import React from "react";
 import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {

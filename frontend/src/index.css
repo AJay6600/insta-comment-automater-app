@@ -9,6 +9,9 @@
   --color-error: #f46a6a;
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-modalBg: #1E2433;
+  --color-border:#2e3a55,
+  --color-ModalMaskBg:"rgba(15, 23, 41, 0.5)",
   --gradient-primary: linear-gradient(135deg, #9935ff, #3d8bff);
   --gradient-secondary: linear-gradient(180deg, #83a2ff, #141826);
   --glow: 0 0 40px rgba(154, 59, 255, 0.3);
