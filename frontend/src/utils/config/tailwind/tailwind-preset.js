@@ -7,7 +7,7 @@ module.exports = {
     },
     boxShadow: {
       glow: "0 0 40px rgba(154, 59, 255, 0.3)",
-      "glow-accent": "0 0 40px rgba(61, 139, 255, 0.3)",
+      "glow-accent": "0 0 6px rgba(61, 139, 255, 0.3)",
     },
     colors: {
       primary: {
