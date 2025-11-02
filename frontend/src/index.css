@@ -9,9 +9,30 @@
   --color-error: #f46a6a;
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-elementBg: #26344a;
+  --color-modalBg: #161f30;
+  --color-border: #2e3a55;
+  --color-ModalMaskBg: "rgba(15, 23, 41, 0.5)";
   --gradient-primary: linear-gradient(135deg, #9935ff, #3d8bff);
-  --gradient-secondary: linear-gradient(180deg, #83a2ff, #141826);
+  --gradient-secondary: linear-gradient(135deg, #83a2ff, #141826);
   --glow: 0 0 40px rgba(154, 59, 255, 0.3);
   --glow-accent: 0 0 40px rgba(61, 139, 255, 0.3);
   --color-active-shadow: 0 0 0 2px #9935ff;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b !important;
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #6b7280;
+  border-radius: 8px;
+  border: 2px solid #1e293b;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
 }

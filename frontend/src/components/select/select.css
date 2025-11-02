@@ -1,0 +1,21 @@
+.select {
+  border-radius: 5px;
+  :hover {
+    border: 1px;
+    border-color: var(--color-primary);
+  }
+}
+
+.selectError {
+  border: 0.5px solid var(--color-error);
+  border-radius: 5px;
+}
+
+.custom-popup .ant-select-item {
+  margin-bottom: 1px;
+  border-radius: 2px !important;
+}
+
+.custom-popup .ant-select-item-option-state {
+  color: (var(--color-white)) !important;
+}

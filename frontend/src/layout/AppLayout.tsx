@@ -7,10 +7,10 @@ const AppLayout = () => {
   return (
     <Layout className="min-h-screen">
       <Header className="bg-secondary-400 border-b border-secondary-100 items-start flex align-middle">
-      <div className="self-center rounded-xl bg-gradient-primary p-2 shadow-lg ">
-      <FaInstagram size={28}/>
-      </div> 
-      <h1 className="text-white p-2 self-center text-2xl">Commentor</h1>
+        <div className="self-center rounded-xl bg-gradient-primary p-2 shadow-lg ">
+          <FaInstagram size={28} />
+        </div>
+        <h1 className="text-white p-2 self-center text-2xl">Commentor</h1>
       </Header>
       <Content className="h-full bg-secondary">{<Outlet />}</Content>
     </Layout>
