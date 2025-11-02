@@ -6,22 +6,20 @@ import Modal from "../components/Modal";
 import AddInstagramAccountForm from "../forms/AddInstagramAccountForm";
 import type { InstagramAccountDetailsType } from "../utils/types";
 import InstagramAccounts from "../components/InstagramAccounts";
+import { useAppData } from "../context/AppContext";
 
 const { Text } = Typography;
 
 const Home = () => {
+  const { instagramAccounts, setInstagramAccounts } = useAppData();
+
   const [openAddAccountModal, setOpenAddAccountModal] =
     useState<boolean>(false);
-
-  const [instaAccounts, setInstaAccounts] = useState<
-    InstagramAccountDetailsType[]
-  >([]);
 
   const handleAddInstagramAccount = (
     accountDetails: InstagramAccountDetailsType
   ) => {
-    console.log("Account details:", accountDetails);
-    setInstaAccounts((prev) => [...prev, accountDetails]);
+    setInstagramAccounts((prev) => [...prev, accountDetails]);
     setOpenAddAccountModal(false);
   };
 
@@ -30,9 +28,9 @@ const Home = () => {
       <Row className="px-6 py-11">
         <Col span={24} className="flex justify-end">
           <Row gutter={[16, 0]}>
-            {instaAccounts.length > 0 && (
+            {instagramAccounts.length > 0 && (
               <Col>
-                <InstagramAccounts accountsDetails={instaAccounts} />
+                <InstagramAccounts />
               </Col>
             )}
 

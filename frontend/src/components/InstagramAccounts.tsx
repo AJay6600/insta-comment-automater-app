@@ -1,21 +1,19 @@
 import { Avatar } from "antd";
 import { useNavigate } from "react-router-dom";
-import type { InstagramAccountDetailsType } from "../utils/types";
 import { FaUsers } from "react-icons/fa";
+import { useAppData } from "../context/AppContext";
 
-type InstagramAccountsPropsType = {
-  accountsDetails: InstagramAccountDetailsType[];
-};
-
-const InstagramAccounts = ({ accountsDetails }: InstagramAccountsPropsType) => {
+const InstagramAccounts = () => {
   const navigate = useNavigate();
 
-  const visibleAccounts = accountsDetails.slice(0, 3);
+  const { instagramAccounts } = useAppData();
 
-  const remainingCount = accountsDetails.length - visibleAccounts.length;
+  const visibleAccounts = instagramAccounts.slice(0, 3);
+
+  const remainingCount = instagramAccounts.length - visibleAccounts.length;
 
   const handleCountClick = () => {
-    navigate("/instagram-accounts"); // 👈 Change this to your route
+    navigate("/instagram-accounts");
   };
 
   return (

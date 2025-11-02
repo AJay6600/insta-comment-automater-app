@@ -26,6 +26,7 @@ const AddInstagramAccountForm = ({
 }: AddInstagramAccountFormPropsType) => {
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<AddInstagramAccountFormType>({
@@ -37,6 +38,7 @@ const AddInstagramAccountForm = ({
   /** Function which called on submission of form */
   const onSubmit = (formData: AddInstagramAccountFormType) => {
     onAddAccount({ ...formData, isActive: true });
+    reset();
   };
 
   return (
