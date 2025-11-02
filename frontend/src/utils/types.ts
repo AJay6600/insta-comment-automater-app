@@ -4,3 +4,9 @@ export type InstagramAccountDetailsType = {
   password: string;
   isActive: boolean;
 };
+
+/** Type for the commenter setting */
+export type CommenterSettingType = {
+  numberOfComment: number;
+  selectedAccounts: InstagramAccountDetailsType[];
+};

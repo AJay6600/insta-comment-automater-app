@@ -1,10 +1,17 @@
-import { createContext, useContext, useMemo, useState } from "react";
-import type { InstagramAccountDetailsType } from "../utils/types";
+import { createContext, useContext, useState } from "react";
+import type {
+  CommenterSettingType,
+  InstagramAccountDetailsType,
+} from "../utils/types";
 
 type AppContextType = {
   instagramAccounts: InstagramAccountDetailsType[];
   setInstagramAccounts: React.Dispatch<
     React.SetStateAction<InstagramAccountDetailsType[]>
+  >;
+  commenterSetting: CommenterSettingType;
+  setCommenterSetting: React.Dispatch<
+    React.SetStateAction<CommenterSettingType>
   >;
 };
 
@@ -13,6 +20,9 @@ const AppContext = createContext<AppContextType>({
   instagramAccounts: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setInstagramAccounts: () => {},
+  commenterSetting: { numberOfComment: 1, selectedAccounts: [] },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setCommenterSetting: () => {},
 });
 
 export const AppContextProvider = ({
@@ -24,10 +34,18 @@ export const AppContextProvider = ({
     InstagramAccountDetailsType[]
   >([]);
 
-  const contextValues = useMemo(
-    () => ({ instagramAccounts, setInstagramAccounts }),
-    [instagramAccounts]
-  );
+  const [commenterSetting, setCommenterSetting] =
+    useState<CommenterSettingType>({
+      numberOfComment: 1,
+      selectedAccounts: [],
+    });
+
+  const contextValues = {
+    instagramAccounts,
+    setInstagramAccounts,
+    commenterSetting,
+    setCommenterSetting,
+  };
 
   /** react context provider */
   return (
