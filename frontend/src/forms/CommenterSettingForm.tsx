@@ -9,10 +9,6 @@ import { Select } from "../components/select/Select";
 import type { InstagramAccountDetailsType } from "../utils/types";
 import { useEffect } from "react";
 
-type CommenterSettingFormPropsType = {
-  closeForm: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 type CommenterSettingFormType = {
   numberOfComment: number;
   selectedAccounts: string[];
@@ -22,7 +18,7 @@ const validationSchema = yup.object({
   numberOfComment: yup.number().required("This field is required"),
 });
 
-const CommenterSettingForm = ({ closeForm }: CommenterSettingFormPropsType) => {
+const CommenterSettingForm = () => {
   const { commenterSetting, instagramAccounts, setCommenterSetting } =
     useAppData();
 
@@ -69,7 +65,6 @@ const CommenterSettingForm = ({ closeForm }: CommenterSettingFormPropsType) => {
 
     setCommenterSetting(updatedCommenterSetting);
     reset();
-    closeForm(false);
   };
 
   return (

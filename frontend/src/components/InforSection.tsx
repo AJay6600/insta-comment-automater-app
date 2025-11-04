@@ -1,25 +1,24 @@
-import { Avatar, Badge, Button, Col, Row, Typography } from "antd";
+import { Button, Col, Row, Typography } from "antd";
 import { useState } from "react";
-import { FaUser, FaUserCheck } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import InstagramAccounts from "./InstagramAccounts";
-import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { MdAdd } from "react-icons/md";
 import { useAppData } from "../context/AppContext";
 import AddInstagramAccountForm from "../forms/AddInstagramAccountForm";
-import CommenterSettingForm from "../forms/CommenterSettingForm";
 import Modal from "./Modal";
 import type { InstagramAccountDetailsType } from "../utils/types";
+import { IoMdSettings } from "react-icons/io";
+import CommenterSettingForm from "../forms/CommenterSettingForm";
 
 const { Text } = Typography;
 
 const InforSection = () => {
-  const { instagramAccounts, setInstagramAccounts, commenterSetting } =
-    useAppData();
+  const { instagramAccounts, setInstagramAccounts } = useAppData();
 
   const [openAddAccountModal, setOpenAddAccountModal] =
     useState<boolean>(false);
 
-  const [openCommenterSetupModal, setOpenCommenterSetupModal] =
+  const [openCommenterSetting, setOpenCommenterSetting] =
     useState<boolean>(false);
 
   const handleAddInstagramAccount = (
@@ -29,70 +28,23 @@ const InforSection = () => {
     setOpenAddAccountModal(false);
   };
 
-  const getSelectedAccountCount = () => {
-    if (instagramAccounts.length === 0) {
-      return "No Acc";
-    }
-    return instagramAccounts.length === commenterSetting.selectedAccounts.length
-      ? "All"
-      : `${commenterSetting.selectedAccounts.length}/${instagramAccounts.length}`;
-  };
-
   return (
     <div>
-      <Row>
-        <Col span={12}>
-          <Row gutter={[38, 0]}>
-            {/* Number of account select badge */}
-            <Col>
-              <Badge
-                count={getSelectedAccountCount()}
-                styles={{
-                  indicator: {
-                    backgroundColor: "var(--color-primary)",
-                  },
-                }}
-              >
-                <Avatar
-                  shape="square"
-                  size="large"
-                  className="bg-gradient-primary"
-                  icon={<FaUserCheck />}
-                />
-              </Badge>
-            </Col>
-
-            {/* number of comment */}
-            <Col>
-              <div className="flex flex-col justify-center align-middle bg-primary-100 p-2 rounded-md">
-                <Text className="text-white text-base">
-                  Number of comment : {commenterSetting.numberOfComment}
-                </Text>
-              </div>
-            </Col>
-
+      <Row justify={{ sm: "space-between", md: "end" }} gutter={[0, 12]}>
+        <Col
+          span={24}
+          lg={12}
+          className="w-full flex justify-between md:justify-end"
+        >
+          <Row
+            gutter={[{ md: 16 }, 0]}
+            className="w-full flex justify-between lg:justify-end"
+          >
             {instagramAccounts.length > 0 && (
               <Col>
                 <InstagramAccounts />
               </Col>
             )}
-          </Row>
-        </Col>
-
-        <Col span={12} className="flex justify-end">
-          <Row gutter={[16, 0]}>
-            {/* setup commenter */}
-            <Col>
-              <Button
-                icon={<IoSettingsOutline size={20} />}
-                onClick={() => {
-                  setOpenCommenterSetupModal(true);
-                }}
-                className="p-5 bg-gradient-primary hover:!bg-gradient-primary hover:!text-white hover:shadow-glow hover:shadow-md border-none text-white text-base font-medium"
-              >
-                Commenter Settings
-              </Button>
-            </Col>
 
             {/* Add account button */}
             <Col>
@@ -107,6 +59,19 @@ const InforSection = () => {
               </Button>
             </Col>
           </Row>
+        </Col>
+
+        {/* comment setting button */}
+        <Col span={24} className="flex justify-end md:hidden">
+          <Button
+            icon={<IoMdSettings size={20} />}
+            onClick={() => {
+              setOpenCommenterSetting(true);
+            }}
+            className="p-5 bg-gradient-primary hover:!bg-gradient-primary hover:!text-white hover:shadow-glow hover:shadow-md border-none text-white text-base font-medium"
+          >
+            Commenter setting
+          </Button>
         </Col>
       </Row>
 
@@ -124,18 +89,17 @@ const InforSection = () => {
         <AddInstagramAccountForm onAddAccount={handleAddInstagramAccount} />
       </Modal>
 
-      {/* Setup commenter modal */}
       <Modal
         title={
           <div className="flex items-center gap-3">
-            <IoSettingsSharp size={20} color="var(--color-white)" />
-            <Text className="text-white text-lg">Setup Commenter</Text>
+            <IoMdSettings size={20} color="var(--color-white)" />
+            <Text className="text-white text-lg">Commenter setting</Text>
           </div>
         }
-        isOpen={openCommenterSetupModal}
-        onClose={setOpenCommenterSetupModal}
+        isOpen={openCommenterSetting}
+        onClose={setOpenCommenterSetting}
       >
-        <CommenterSettingForm closeForm={setOpenCommenterSetupModal} />
+        <CommenterSettingForm />
       </Modal>
     </div>
   );
