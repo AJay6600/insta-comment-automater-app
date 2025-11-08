@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon --watch src --exec \"npx ts-node src/server.ts\"",
+    "dev": "nodemon --watch src --exec npx ts-node src/server.ts",
     "lint": "eslint 'src/**/*.ts'"
   },
   "keywords": [],
@@ -14,6 +14,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.0",
     "dotenv": "^17.2.3",
@@ -21,12 +23,15 @@
     "express": "^5.1.0",
     "install": "^0.13.0",
     "nodemon": "^3.1.10",
-    "npm": "^11.6.2",
+    "npm": "^11.6.0",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "mongoose": "^8.19.3"
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "mongoose": "^8.19.3",
+    "playwright": "^1.56.1"
   }
 }
