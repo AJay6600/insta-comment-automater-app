@@ -6,27 +6,31 @@ import { MdAdd } from "react-icons/md";
 import { useAppData } from "../context/AppContext";
 import AddInstagramAccountForm from "../forms/AddInstagramAccountForm";
 import Modal from "./Modal";
-import type { InstagramAccountDetailsType } from "../utils/types";
+import type { AddAccountPayload, AddAccountResponseType } from "../utils/types";
 import { IoMdSettings } from "react-icons/io";
 import CommenterSettingForm from "../forms/CommenterSettingForm";
+import type { UseMutateAsyncFunction } from "@tanstack/react-query";
+
+type InfoSectionPropsType = {
+  onAddAccount: UseMutateAsyncFunction<
+    AddAccountResponseType,
+    Error,
+    AddAccountPayload,
+    unknown
+  >;
+  isLoading: boolean;
+};
 
 const { Text } = Typography;
 
-const InforSection = () => {
-  const { instagramAccounts, setInstagramAccounts } = useAppData();
+const InfoSection = ({ onAddAccount, isLoading }: InfoSectionPropsType) => {
+  const { instagramAccounts } = useAppData();
 
   const [openAddAccountModal, setOpenAddAccountModal] =
     useState<boolean>(false);
 
   const [openCommenterSetting, setOpenCommenterSetting] =
     useState<boolean>(false);
-
-  const handleAddInstagramAccount = (
-    accountDetails: InstagramAccountDetailsType
-  ) => {
-    setInstagramAccounts((prev) => [...prev, accountDetails]);
-    setOpenAddAccountModal(false);
-  };
 
   return (
     <div>
@@ -86,7 +90,10 @@ const InforSection = () => {
         isOpen={openAddAccountModal}
         onClose={setOpenAddAccountModal}
       >
-        <AddInstagramAccountForm onAddAccount={handleAddInstagramAccount} />
+        <AddInstagramAccountForm
+          onAddAccount={onAddAccount}
+          isLoading={isLoading}
+        />
       </Modal>
 
       <Modal
@@ -105,4 +112,4 @@ const InforSection = () => {
   );
 };
 
-export default InforSection;
+export default InfoSection;

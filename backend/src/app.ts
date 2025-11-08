@@ -1,14 +1,22 @@
-import express from "express";
-
-import { errorHandler } from "./middlewares/errorHandler";
+import express from 'express';
+import { errorHandler } from './middlewares/errorHandler';
+import accountRoute from './routes/accountRoute';
+import cors from 'cors';
 
 const app = express();
 
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 
-/** Add routes here  */
+app.use('/api/accounts', accountRoute);
 
-// Global error handler (should be after routes)
 app.use(errorHandler);
 
 export default app;

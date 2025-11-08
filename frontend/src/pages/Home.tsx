@@ -1,19 +1,22 @@
 import { Col, Row } from "antd";
-import InforSection from "../components/InforSection";
-
 import PostCommentSection from "../components/PostCommentSection";
 import CommenterSettingSection from "../components/CommenterSettingSection";
 import { useState } from "react";
 import type { CommentsPerSelectedAccountsDataType } from "../utils/types";
 import CommentProgressCard from "../components/CommentProgressCard";
+import { useAddAccount } from "../hooks/useAddAccount";
+import InfoSection from "../components/InfoSection";
 
 const Home = () => {
   const [commentsPerSelectedAccounts, setCommentsPerSelectedAccounts] =
     useState<CommentsPerSelectedAccountsDataType[]>([]);
+
+  const { mutateAsync, isPending } = useAddAccount();
+
   return (
     <Row className="px-3 md:px-6 py-6 md:py-11" gutter={[0, 30]}>
       <Col span={24}>
-        <InforSection />
+        <InfoSection onAddAccount={mutateAsync} isLoading={isPending} />
       </Col>
 
       <Col span={24} className="h-full">
